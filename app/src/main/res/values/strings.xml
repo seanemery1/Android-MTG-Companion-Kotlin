@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Android MTG Companion Kotlin</string>
+    <string name="button_debug">Debug Menu</string>
+    <string name="button_camera">Camera</string>
+</resources>
