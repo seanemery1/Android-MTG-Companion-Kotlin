@@ -2,4 +2,38 @@
     <string name="app_name">Android MTG Companion Kotlin</string>
     <string name="button_debug">Debug Menu</string>
     <string name="button_camera">Camera</string>
+    <string name="temp">temp</string>
+    // Card Activity
+    <string name="textView_cardName">Name: </string>
+    <string name="textView_cardMana">Mana Cost</string>
+    <string name="textView_cardManaCon">CV Mana Cost</string>
+    <string name="textView_cardType">Type: </string>
+    <string name="textView_cardText">Counter target spell.</string>
+    <string name="textView_cardRarity">Rarity: </string>
+    <string name="textView_cardQuantity">Quantity: </string>
+    // Main Activity
+    <string name="button_mainView">View Collections</string>
+    <string name="button_mainNew">New Collection</string>
+    <string name="textView_appName">MTG Collection Companion</string>
+    // CollectionActivity
+    <string name="tab_all">All</string>
+    <string name="tab_decks">Decks</string>
+    <string name="tab_binders">Binders</string>
+    <string name="tab_favorites">Favorites</string>
+    //Card List Activity
+    <string name="button_list">List</string>
+    <string name="dialog_addCardMsg">Card Search:</string>
+    <string name="button_addCard">Add Card</string>
+    <string-array name="scan">
+        <item>Scan Card</item>
+    </string-array>
+    // Dialog
+    <string name="dialog_message">MTG Collection Companion</string>
+    <string name="dialog_title">Please enter a new name for your folder:</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string-array name="choice">
+        <item>New Deck</item>
+        <item>New Collection</item>
+    </string-array>
 </resources>

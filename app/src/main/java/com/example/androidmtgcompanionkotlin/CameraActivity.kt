@@ -52,7 +52,7 @@ class CameraActivity : AppCompatActivity() {
         viewFinder = findViewById(R.id.viewFinder)
         camera_capture_button = findViewById(R.id.camera_capture_button)
         mGraphicOverlay = findViewById(R.id.graphic_overlay)
-        mGraphicOverlay.setCameraInfo(viewFinder.width,viewFinder.height, CameraCharacteristics.LENS_FACING_BACK)
+
         // Request camera permissions
         if (allPermissionsGranted()) {
             startCamera()
@@ -126,6 +126,7 @@ class CameraActivity : AppCompatActivity() {
 
 
             val textAnalyzer = ImageAnalysis.Builder()
+                    .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
                     .build()
                     .also {
                         it.setAnalyzer(
@@ -135,7 +136,8 @@ class CameraActivity : AppCompatActivity() {
                     }
             // Select back camera as a default
             val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
-
+            Log.d("dim", "width: " + viewFinder.width + " height:" + viewFinder.height)
+            mGraphicOverlay.setCameraInfo(viewFinder.width, viewFinder.height, CameraCharacteristics.LENS_FACING_BACK)
             try {
                 // Unbind use cases before rebinding
                 cameraProvider.unbindAll()
