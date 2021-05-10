@@ -75,6 +75,9 @@ class FolderListAdapter: ListAdapter<Folder,FolderListAdapter.FolderViewHolder>(
 
 
 
+
+
+
         //        searchView_filter.setOnQueryTextListener( new SearchView.OnQueryTextListener() {
 //            @Override
 //            public boolean onQueryTextChange(String newText) {
