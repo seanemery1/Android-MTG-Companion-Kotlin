@@ -10,17 +10,19 @@
         android:id="@+id/imageView_mainLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:contentDescription="@string/temp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars"
-        android:contentDescription="@string/temp" />
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/textView_appName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="63dp"
+        android:layout_marginTop="8dp"
         android:text="@string/textView_appName"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,19 +30,10 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView_mainLogo" />
 
     <Button
-        android:id="@+id/button_debug"
+        android:id="@+id/button_mainNew"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_debug"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/button_mainNew"
-        android:layout_width="93dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="100dp"
         android:text="@string/button_mainNew"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

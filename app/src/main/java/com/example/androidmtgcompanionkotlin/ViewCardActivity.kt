@@ -3,19 +3,23 @@ package com.example.androidmtgcompanionkotlin
 import android.content.Intent
 import android.os.Bundle
 import android.app.AlertDialog
+import android.text.method.LinkMovementMethod
 import android.widget.*
 import androidx.activity.viewModels
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import com.squareup.picasso.Picasso
 
 class ViewCardActivity : AppCompatActivity() {
 
     private lateinit var textViewName: TextView
     private lateinit var textViewMana: TextView
     private lateinit var textViewManaCon: TextView
+    private lateinit var textViewType: TextView
     private lateinit var textViewRulesText: TextView
-    private lateinit var textViewRarity: TextView
+    private lateinit var textViewExternal: TextView
+    private lateinit var imageViewCardArt: ImageView
 
     //private lateinit var buttonDelete:Button
     private lateinit var card: Card
@@ -32,9 +36,11 @@ class ViewCardActivity : AppCompatActivity() {
         textViewName = findViewById(R.id.textView_cardName)
         textViewMana = findViewById(R.id.textView_cardMana)
         textViewManaCon = findViewById(R.id.textView_cardManaCon)
+        textViewType = findViewById(R.id.textView_cardType)
         textViewRulesText = findViewById(R.id.textView_cardRulesText)
-        textViewRarity = findViewById(R.id.textView_cardRarity)
-        //textViewReflection = findViewById(R.id.textView_cardQuantity)
+        textViewExternal = findViewById(R.id.textView_cardLink)
+        imageViewCardArt = findViewById(R.id.imageView_cardArt)
+
 
         index = intent.getIntExtra("id", -1)
 
@@ -45,8 +51,11 @@ class ViewCardActivity : AppCompatActivity() {
                     textViewName.text = card.name
                     textViewMana.text = card.mana
                     textViewManaCon.text = card.manaCon.toString()
-                    textViewRulesText.text = card.name
-                    textViewRarity.text = card.name
+                    textViewType.text = card.type
+                    textViewRulesText.text = card.rulesText
+                    textViewExternal.text = card.scryfallURI
+                    textViewExternal.movementMethod = LinkMovementMethod.getInstance();
+                    Picasso.get().load(card.imageURI).into(imageViewCardArt)
                 }
             })
         }

@@ -44,6 +44,10 @@ class CardFolderRepository(private val cardDao: CardDAO, private val folderDao: 
         return folderDao.getLastRow()
     }
 
+    fun findFolder(id:Int): LiveData<Folder> {
+        return folderDao.findFolder(id)
+    }
+
 
 }
 

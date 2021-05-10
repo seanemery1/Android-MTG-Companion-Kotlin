@@ -20,7 +20,7 @@
             <ImageView
                 android:id="@+id/imageView_cardArt"
                 android:layout_width="match_parent"
-                android:layout_height="175dp"
+                android:layout_height="250dp"
                 android:contentDescription="@string/temp"
                 tools:srcCompat="@tools:sample/avatars" />
 
@@ -74,11 +74,11 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/textView_cardRarity"
+                android:id="@+id/textView_cardLink"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="@string/textView_cardRarity"
+                android:text="@string/textView_cardURL"
                 android:textSize="18sp" />
 
         </LinearLayout>

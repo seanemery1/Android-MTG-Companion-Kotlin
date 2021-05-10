@@ -3,17 +3,18 @@ package com.example.androidmtgcompanionkotlin
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 
 import android.widget.*
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModel
+import com.squareup.picasso.Picasso
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var buttonDebug: Button
     private lateinit var buttonNew: Button
+    private lateinit var buttonView: Button
+    private lateinit var imageView: ImageView
 
     private val cardFolderViewModel:CardFolderViewModel by viewModels{
         CardFolderViewModelFactory((application as CardFolderApplication).repository)
@@ -22,13 +23,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
-        buttonDebug = findViewById(R.id.button_debug)
+        //buttonDebug = findViewById(R.id.button_debug)
 
-        buttonDebug.setOnClickListener {
-            val intent = Intent(this@MainActivity, DebugActivity::class.java)
-            startActivity(intent)
-        }
+//        buttonDebug.setOnClickListener {
+//            val intent = Intent(this@MainActivity, DebugActivity::class.java)
+//            startActivity(intent)
+//        }
+        imageView = findViewById(R.id.imageView_mainLogo)
+
+        Picasso.get().load("file:///android_asset/logo.jpg").into(imageView)
         buttonNew = findViewById(R.id.button_mainNew)
+        buttonView = findViewById(R.id.button_mainView)
 
         buttonNew.setOnClickListener {
             var isDeck = true
@@ -73,6 +78,13 @@ class MainActivity : AppCompatActivity() {
                 }
             val alert = dialogBuilder.create()
             alert.show()
+        }
+
+
+
+        buttonView.setOnClickListener {
+            val intent = Intent(this@MainActivity, FolderListActivity::class.java)
+            startActivity(intent)
         }
     }
     private fun toastInput(text: String) {

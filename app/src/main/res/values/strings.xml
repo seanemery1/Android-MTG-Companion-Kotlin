@@ -5,11 +5,11 @@
     <string name="temp">temp</string>
     // Card Activity
     <string name="textView_cardName">Name: </string>
-    <string name="textView_cardMana">Mana Cost</string>
-    <string name="textView_cardManaCon">CV Mana Cost</string>
+    <string name="textView_cardMana">Mana Cost: </string>
+    <string name="textView_cardManaCon">CV Mana Cost: </string>
     <string name="textView_cardType">Type: </string>
-    <string name="textView_cardText">Counter target spell.</string>
-    <string name="textView_cardRarity">Rarity: </string>
+    <string name="textView_cardText">Rules Text: </string>
+    <string name="textView_cardURL">URL: </string>
     <string name="textView_cardQuantity">Quantity: </string>
     // Main Activity
     <string name="button_mainView">View Collections</string>

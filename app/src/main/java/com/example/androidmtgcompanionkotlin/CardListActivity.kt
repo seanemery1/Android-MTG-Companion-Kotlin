@@ -25,6 +25,7 @@ class CardListActivity: AppCompatActivity() {
 
     //private lateinit var autoComplete: AutoCompleteTextView
     private lateinit var buttonAdd: Button
+    private lateinit var textViewCollection: TextView
     private var collectionID:Int = -1
     private val cardFolderViewModel: CardFolderViewModel by viewModels {
         CardFolderViewModelFactory((application as CardFolderApplication).repository)
@@ -33,17 +34,30 @@ class CardListActivity: AppCompatActivity() {
     private lateinit var dialogBuilder : AlertDialog.Builder
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_list)
-        recyclerView = findViewById(R.id.recyclerview)
+        setContentView(R.layout.activity_cardlist)
+        recyclerView = findViewById(R.id.recyclerView_cardlist)
+        textViewCollection = findViewById(R.id.textView_collection)
         val intent = intent
-
-        collectionID = cardFolderViewModel.insertedId.toInt()
-        if (collectionID==-1) {
-            cardFolderViewModel.getLastRow().observe(this, {item->
+        if (intent.getBooleanExtra("fromFolderList", false)) {
+            cardFolderViewModel.findFolder(intent.getIntExtra("collectionID",1)).observe(this, {item->
                 collectionID = item.id
                 cardFolderViewModel.selectedFolder.value = item
+                textViewCollection.text = item.name
             })
+        } else {
+            collectionID = cardFolderViewModel.insertedId.toInt()
+            if (collectionID==-1) {
+                cardFolderViewModel.getLastRow().observe(this, {item->
+                    collectionID = item.id
+                    cardFolderViewModel.selectedFolder.value = item
+                    textViewCollection.text = item.name
+                })
+            }
         }
+
+         //intent.getStringExtra("name")
+
+
 
 
         // AutoComplete
@@ -146,14 +160,6 @@ class CardListActivity: AppCompatActivity() {
                 }
             val alert = dialogBuilder.create()
             alert.show()
-//            class Card(@ColumnInfo(name="name") var name:String,
-//                       @ColumnInfo(name="mana") var mana:String,
-//                       @ColumnInfo(name="manaCon") var manaCon:String,
-//                       @ColumnInfo(name="type") var type:String,
-//                       @ColumnInfo(name="text") var text:String,
-//                       @ColumnInfo(name="flavorText") var flavorText:String,
-//                       @ColumnInfo(name ="quantity") var quantity:Int,
-//                       @ColumnInfo(name = "collectionID") var collectionID:Int)
 
         }
 
@@ -161,13 +167,25 @@ class CardListActivity: AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
         cardFolderViewModel.cardsOfSelectedFolder.observe(this, Observer {
-            // update the cached copy of tasks in the adapter to it
                 cards -> cards?.let{
             adapter.submitList(it)
         }
         })
 
-       //ardCollectionViewModel.selectAllCardsFromCollection(intent.getIntExtra)
+
+    }
+
+
+
+    private fun loadJSONfromAssets(filename: String): String {
+        return applicationContext.assets.open(filename).bufferedReader().use { it.readText() }
+    }
+    private fun toastInput(text: String) {
+        Toast.makeText(this, text, Toast.LENGTH_LONG).show()
+    }
+}
+
+//ardCollectionViewModel.selectAllCardsFromCollection(intent.getIntExtra)
 
 //        var cards = cardCollectionViewModel.selectAllCardsFromCollection(intent.getIntExtra("id", -1))
 
@@ -197,26 +215,13 @@ class CardListActivity: AppCompatActivity() {
 
 
 
-        //Getting the instance of AutoCompleteTextView
+//Getting the instance of AutoCompleteTextView
 
 //        autoComplete.threshold = 1 //will start working from first character
 //        autoComplete.setAdapter(adapter) //setting the adapter data into the AutoCompleteTextView
 //        autoComplete.setOnItemClickListener { parent, view, position, id ->
 //            autoComplete.setSelection(position)
 //        }
-    }
-
-
-
-    private fun loadJSONfromAssets(filename: String): String {
-        return applicationContext.assets.open(filename).bufferedReader().use { it.readText() }
-    }
-    private fun toastInput(text: String) {
-        Toast.makeText(this, text, Toast.LENGTH_LONG).show()
-    }
-}
-
-
         //            val villagerJSONObject = jsonArray.getJSONObject(i)
 //            // extract name, birthday, phrase
 //

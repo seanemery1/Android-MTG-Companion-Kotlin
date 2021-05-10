@@ -18,4 +18,11 @@ interface FolderDAO {
 
     @Query("SELECT * FROM folder_table ORDER BY id DESC LIMIT 1")
     fun getLastRow(): LiveData<Folder>
+
+    @Query("SELECT * FROM folder_table WHERE id=:id LIMIT 1")
+    fun findFolder(id:Int): LiveData<Folder>
+
+    @Query("UPDATE folder_table SET favorite=:favorite WHERE id=:id")
+    suspend fun update(favorite:Boolean,
+                       id:Int)
 }
